@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.StaticsExample", "Wisej.StaticsExample\Wisej.StaticsExample.csproj", "{F56D23EB-2833-4844-8EC5-6612AA88946D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F56D23EB-2833-4844-8EC5-6612AA88946D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56D23EB-2833-4844-8EC5-6612AA88946D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56D23EB-2833-4844-8EC5-6612AA88946D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56D23EB-2833-4844-8EC5-6612AA88946D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BB5EFC9-011F-483A-8CAD-2273BD2AD38B}
+	EndGlobalSection
+EndGlobal

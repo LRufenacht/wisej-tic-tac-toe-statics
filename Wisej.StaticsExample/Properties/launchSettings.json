@@ -1,0 +1,31 @@
+{
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iisExpress": {
+			"applicationUrl": "http://localhost:54429",
+			"sslPort": 0
+		}
+	},
+	"profiles": {
+		"Wisej.StaticsExample": {
+			"commandName": "Project",
+			"launchBrowser": true,
+			"applicationUrl": "http://localhost:5000",
+			"environmentVariables": {
+				"WEBSITE_PATH": "$(MSBuildProjectDirectory)"
+			}
+		},
+		"WSL": {
+  			"commandName": "WSL2",
+  			"launchBrowser": true,
+  			"launchUrl": "http://localhost:5000",
+  			"environmentVariables": {
+    			"ASPNETCORE_URLS": "http://localhost:5000",
+    			"WEBSITE_PATH": "$(MSBuildProjectDirectory)"
+  			},
+  			"distributionName": ""
+		}
+
+	}
+}
