@@ -1,84 +1,120 @@
-﻿using System;
+using System;
 using System.Drawing;
 using Wisej.Web;
 
 namespace Wisej.StaticsExample
 {
-	public partial class Page1 : Page
-	{
-		private static event EventHandler<bool> ButtonMoving;
+    public partial class Page1 : Page
+    {
+        private Button[] _buttons = new Button[9];
 
-		private static event EventHandler<Point> ButtonMoved;
+        public Page1()
+        {
+            InitializeComponent();
+        }
 
-		public Page1()
-		{
-			InitializeComponent();
-		}
+        private void Page1_Load(object sender, EventArgs e)
+        {
+            CreateBoard();
 
-		private void Page1_Load(object sender, EventArgs e)
-		{
-			ButtonMoved += Page1_ButtonMoved;
-			ButtonMoving += Page1_ButtonMoving;
-		}
+            TicTacToeGame.MoveMade += TicTacToeGame_MoveMade;
+            TicTacToeGame.GameReset += TicTacToeGame_GameReset;
+            TicTacToeGame.GameEnded += TicTacToeGame_GameEnded;
 
-		private void Page1_ButtonMoving(object sender, bool e)
-		{
-			Application.Update(this, () =>
-			{
-				// if it's the sender, ignore.
-				if (this._selected)
-					return;
+            RenderBoard();
+        }
 
-				this.button1.BackColor = e ? Color.Orange : Color.FromName("@button");
-			});
-		}
+        private void CreateBoard()
+        {
+            int index = 0;
+            for (int r = 0; r < 3; r++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    var btn = new Button();
+                    btn.Dock = DockStyle.Fill;
+                    btn.Font = new Font(this.Font.FontFamily, 24f, FontStyle.Bold);
+                    btn.Tag = new Point(r, c);
+                    btn.Click += Cell_Click;
+                    this.tableLayoutPanel1.Controls.Add(btn, c, r);
+                    _buttons[index++] = btn;
+                }
+            }
+        }
 
-		private void Page1_ButtonMoved(object sender, Point e)
-		{
-			Application.Update(this, () =>
-			{
-				if (this._selected)
-					return;
+        private void RenderBoard()
+        {
+            for (int r = 0; r < 3; r++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    var index = r * 3 + c;
+                    var value = TicTacToeGame.Board[r, c];
+                    _buttons[index].Text = value == '\0' ? "" : value.ToString();
+                    _buttons[index].Enabled = !TicTacToeGame.GameOver && value == '\0';
+                }
+            }
+            this.labelStatus.Text = TicTacToeGame.Message;
+        }
 
-				this.button1.Location = new Point(e.X, e.Y);
-			});
-		}
+        private void Cell_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            var pt = (Point)btn.Tag;
+            TicTacToeGame.MakeMove(pt.X, pt.Y);
+        }
 
-		private void Page1_Disposed(object sender, EventArgs e)
-		{
-			ButtonMoved -= Page1_ButtonMoved;
-		}
+        private void TicTacToeGame_MoveMade(object sender, MoveEventArgs e)
+        {
+            Application.Update(this, () =>
+            {
+                var index = e.Row * 3 + e.Col;
+                _buttons[index].Text = e.Player.ToString();
+                _buttons[index].Enabled = false;
+                this.labelStatus.Text = TicTacToeGame.Message;
+                if (TicTacToeGame.GameOver)
+                    DisableBoard();
+            });
+        }
 
-		private void button1_MouseDown(object sender, MouseEventArgs e)
-		{
-			this._selected = true;
-			this.button1.BackColor = Color.Red;
+        private void TicTacToeGame_GameReset(object sender, EventArgs e)
+        {
+            Application.Update(this, () =>
+            {
+                foreach (var btn in _buttons)
+                {
+                    btn.Text = "";
+                    btn.Enabled = true;
+                }
+                this.labelStatus.Text = TicTacToeGame.Message;
+            });
+        }
 
-			ButtonMoving?.Invoke(this, true);
-		}
-		private bool _selected;
+        private void TicTacToeGame_GameEnded(object sender, string e)
+        {
+            Application.Update(this, () =>
+            {
+                this.labelStatus.Text = e;
+                DisableBoard();
+            });
+        }
 
-		private void button1_MouseUp(object sender, MouseEventArgs e)
-		{
-			this._selected = false;
-			this.button1.BackColor = Color.FromName("@button");
+        private void DisableBoard()
+        {
+            foreach (var btn in _buttons)
+                btn.Enabled = false;
+        }
 
-			ButtonMoving?.Invoke(this, false);
-		}
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            TicTacToeGame.Reset();
+        }
 
-		private void button1_MouseMove(object sender, MouseEventArgs e)
-		{
-			if (this._selected)
-			{
-				// cursor position relative to the button.
-				var cursor = e.Location;
-
-				// cursor position relative to the page.
-				var page = this.button1.PointToScreen(cursor);
-
-				ButtonMoved?.Invoke(this, e.Location);
-			}
-		}
-	}
+        private void Page1_Disposed(object sender, EventArgs e)
+        {
+            TicTacToeGame.MoveMade -= TicTacToeGame_MoveMade;
+            TicTacToeGame.GameReset -= TicTacToeGame_GameReset;
+            TicTacToeGame.GameEnded -= TicTacToeGame_GameEnded;
+        }
+    }
 }
-  
