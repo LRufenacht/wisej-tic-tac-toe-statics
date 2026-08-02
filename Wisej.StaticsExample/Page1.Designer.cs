@@ -28,52 +28,45 @@ namespace Wisej.StaticsExample
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new Wisej.Web.TableLayoutPanel();
+            this.marioGame = new Wisej.StaticsExample.MarioGame();
             this.labelStatus = new Wisej.Web.Label();
             this.buttonReset = new Wisej.Web.Button();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(50, 50);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new Wisej.Web.RowStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new Wisej.Web.RowStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new Wisej.Web.RowStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 300);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
+            // marioGame
+            //
+            this.marioGame.Location = new System.Drawing.Point(20, 20);
+            this.marioGame.Name = "marioGame";
+            this.marioGame.Size = new System.Drawing.Size(800, 400);
+            this.marioGame.TabIndex = 0;
+            //
             // labelStatus
-            // 
-            this.labelStatus.Location = new System.Drawing.Point(50, 360);
+            //
+            this.labelStatus.Location = new System.Drawing.Point(20, 430);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(300, 30);
+            this.labelStatus.Size = new System.Drawing.Size(680, 30);
             this.labelStatus.TabIndex = 1;
             this.labelStatus.Text = "";
-            // 
+            //
             // buttonReset
-            // 
-            this.buttonReset.Location = new System.Drawing.Point(50, 400);
+            //
+            this.buttonReset.Location = new System.Drawing.Point(720, 430);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(300, 30);
+            this.buttonReset.Size = new System.Drawing.Size(100, 30);
             this.buttonReset.TabIndex = 2;
             this.buttonReset.Text = "Reset";
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
-            // 
+            //
             // Page1
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.labelStatus);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.marioGame);
             this.Name = "Page1";
-            this.Size = new System.Drawing.Size(400, 450);
+            this.Size = new System.Drawing.Size(840, 480);
+            this.Text = "Super Wisej Bros.";
             this.Load += new System.EventHandler(this.Page1_Load);
             this.Disposed += new System.EventHandler(this.Page1_Disposed);
             this.ResumeLayout(false);
@@ -81,7 +74,7 @@ namespace Wisej.StaticsExample
 
         #endregion
 
-        private Wisej.Web.TableLayoutPanel tableLayoutPanel1;
+        private Wisej.StaticsExample.MarioGame marioGame;
         private Wisej.Web.Label labelStatus;
         private Wisej.Web.Button buttonReset;
     }
