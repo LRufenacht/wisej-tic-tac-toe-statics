@@ -35,6 +35,8 @@ namespace Wisej.StaticsExample
                 {
                     var btn = new Button();
                     btn.Dock = DockStyle.Fill;
+                    btn.Margin = new Padding(2);
+                    btn.BackColor = Color.White;
                     btn.Font = new Font(this.Font.FontFamily, 24f, FontStyle.Bold);
                     btn.Tag = new Point(r, c);
                     btn.Click += Cell_Click;
