@@ -69,6 +69,7 @@ namespace Wisej.StaticsExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.tableLayoutPanel1);
