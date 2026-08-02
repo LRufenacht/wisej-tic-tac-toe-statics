@@ -31,10 +31,21 @@ namespace Wisej.StaticsExample
             this.tableLayoutPanel1 = new Wisej.Web.TableLayoutPanel();
             this.labelStatus = new Wisej.Web.Label();
             this.buttonReset = new Wisej.Web.Button();
+            this.labelTitle = new Wisej.Web.Label();
             this.SuspendLayout();
-            // 
+            //
+            // labelTitle
+            //
+            this.labelTitle.Font = new System.Drawing.Font("Default", 18F, System.Drawing.FontStyle.Bold);
+            this.labelTitle.Location = new System.Drawing.Point(50, 10);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(300, 30);
+            this.labelTitle.TabIndex = 3;
+            this.labelTitle.Text = "Tic Tac Toe";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
@@ -72,6 +83,7 @@ namespace Wisej.StaticsExample
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.labelTitle);
             this.Name = "Page1";
             this.Size = new System.Drawing.Size(400, 450);
             this.Load += new System.EventHandler(this.Page1_Load);
@@ -84,5 +96,6 @@ namespace Wisej.StaticsExample
         private Wisej.Web.TableLayoutPanel tableLayoutPanel1;
         private Wisej.Web.Label labelStatus;
         private Wisej.Web.Button buttonReset;
+        private Wisej.Web.Label labelTitle;
     }
 }
