@@ -74,6 +74,7 @@ namespace Wisej.StaticsExample
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Page1";
             this.Size = new System.Drawing.Size(400, 450);
+            this.Text = "Tic Tac Toe";
             this.Load += new System.EventHandler(this.Page1_Load);
             this.Disposed += new System.EventHandler(this.Page1_Disposed);
             this.ResumeLayout(false);
