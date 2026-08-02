@@ -42,6 +42,9 @@ namespace Wisej.StaticsExample
             }
         }
 
+        /// <summary>
+        /// Clears the board and gives the first turn to X.
+        /// </summary>
         public static void Reset()
         {
             Board = new char[3, 3];
