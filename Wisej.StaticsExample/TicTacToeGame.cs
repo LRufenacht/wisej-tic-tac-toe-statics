@@ -7,7 +7,7 @@ namespace Wisej.StaticsExample
         public static char[,] Board { get; private set; } = new char[3, 3];
         public static char CurrentPlayer { get; private set; } = 'X';
         public static bool GameOver { get; private set; }
-        public static string Message { get; private set; } = "Player X's turn";
+        public static string Message { get; private set; } = "X goes first — your move";
 
         public static event EventHandler<MoveEventArgs> MoveMade;
         public static event EventHandler GameReset;
@@ -47,7 +47,7 @@ namespace Wisej.StaticsExample
             Board = new char[3, 3];
             CurrentPlayer = 'X';
             GameOver = false;
-            Message = "Player X's turn";
+            Message = "X goes first — your move";
             GameReset?.Invoke(null, EventArgs.Empty);
         }
 
