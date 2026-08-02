@@ -15,6 +15,8 @@ namespace Wisej.StaticsExample
 
         private void Page1_Load(object sender, EventArgs e)
         {
+            Application.Title = "Tic Tac Toe";
+
             CreateBoard();
 
             TicTacToeGame.MoveMade += TicTacToeGame_MoveMade;
