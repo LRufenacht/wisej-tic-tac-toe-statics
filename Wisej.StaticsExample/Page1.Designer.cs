@@ -58,7 +58,7 @@ namespace Wisej.StaticsExample
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(50, 400);
+            this.buttonReset.Location = new System.Drawing.Point(50, 10);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(300, 30);
             this.buttonReset.TabIndex = 2;
