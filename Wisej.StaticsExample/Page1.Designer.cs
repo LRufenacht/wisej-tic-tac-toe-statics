@@ -28,62 +28,77 @@ namespace Wisej.StaticsExample
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new Wisej.Web.TableLayoutPanel();
-            this.labelStatus = new Wisej.Web.Label();
+            this.components = new System.ComponentModel.Container();
+            this.gameArea = new Wisej.Web.Panel();
+            this.scoreLabel = new Wisej.Web.Label();
             this.buttonReset = new Wisej.Web.Button();
+            this.hintLabel = new Wisej.Web.Label();
+            this.gameTimer = new Wisej.Web.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new Wisej.Web.ColumnStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(50, 50);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new Wisej.Web.RowStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new Wisej.Web.RowStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new Wisej.Web.RowStyle(Wisej.Web.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 300);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // labelStatus
-            // 
-            this.labelStatus.Location = new System.Drawing.Point(50, 360);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(300, 30);
-            this.labelStatus.TabIndex = 1;
-            this.labelStatus.Text = "";
-            // 
+            //
+            // gameArea
+            //
+            this.gameArea.BackColor = System.Drawing.Color.SkyBlue;
+            this.gameArea.Focusable = true;
+            this.gameArea.Location = new System.Drawing.Point(20, 65);
+            this.gameArea.Name = "gameArea";
+            this.gameArea.Size = new System.Drawing.Size(760, 380);
+            this.gameArea.TabIndex = 0;
+            this.gameArea.TabStop = true;
+            //
+            // scoreLabel
+            //
+            this.scoreLabel.Location = new System.Drawing.Point(20, 20);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(180, 30);
+            this.scoreLabel.TabIndex = 1;
+            this.scoreLabel.Text = "Coins: 0";
+            //
             // buttonReset
-            // 
-            this.buttonReset.Location = new System.Drawing.Point(50, 400);
+            //
+            this.buttonReset.Location = new System.Drawing.Point(680, 20);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(300, 30);
+            this.buttonReset.Size = new System.Drawing.Size(100, 30);
             this.buttonReset.TabIndex = 2;
             this.buttonReset.Text = "Reset";
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
-            // 
+            //
+            // hintLabel
+            //
+            this.hintLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.hintLabel.Location = new System.Drawing.Point(20, 455);
+            this.hintLabel.Name = "hintLabel";
+            this.hintLabel.Size = new System.Drawing.Size(760, 20);
+            this.hintLabel.TabIndex = 3;
+            this.hintLabel.Text = "Click the sky, then use ← → to move and Space / ↑ to jump. Collect coins, avoid the goomba.";
+            //
+            // gameTimer
+            //
+            this.gameTimer.Enabled = false;
+            this.gameTimer.Interval = 40;
+            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
+            //
             // Page1
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
             this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.labelStatus);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.scoreLabel);
+            this.Controls.Add(this.hintLabel);
+            this.Controls.Add(this.gameArea);
             this.Name = "Page1";
-            this.Size = new System.Drawing.Size(400, 450);
+            this.Size = new System.Drawing.Size(800, 485);
             this.Load += new System.EventHandler(this.Page1_Load);
-            this.Disposed += new System.EventHandler(this.Page1_Disposed);
             this.ResumeLayout(false);
         }
 
         #endregion
 
-        private Wisej.Web.TableLayoutPanel tableLayoutPanel1;
-        private Wisej.Web.Label labelStatus;
+        private Wisej.Web.Panel gameArea;
+        private Wisej.Web.Label scoreLabel;
         private Wisej.Web.Button buttonReset;
+        private Wisej.Web.Label hintLabel;
+        private Wisej.Web.Timer gameTimer;
     }
 }
